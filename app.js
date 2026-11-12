@@ -19,7 +19,7 @@
     ws.onopen=()=>{
       state.connected=true; setConnection("connected","Live market feed connected");
       state.ticks=[]; $("marketName").textContent=names[state.market];
-      ws.send(JSON.stringify({ticks_history:state.market,adjust_start_time:1,count:300,end:"latest",style:"ticks",req_id:state.requestId++}));
+      ws.send(JSON.stringify({ticks_history:state.market,adjust_start_time:1,count:300,end:"latest",style:"ticks",subscribe:1,req_id:state.requestId++}));
     };
     ws.onmessage=event=>{
       let msg; try {msg=JSON.parse(event.data)} catch(e){return}
